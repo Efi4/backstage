@@ -4,7 +4,7 @@ metadata:
   name: "artist-web"
   namespace: namespace
   title: title
-  description: "The place to be, for great artists"
+  description: "New description"
   labels:
     environment: prod
     organization: yamaha
