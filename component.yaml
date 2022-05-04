@@ -5,20 +5,35 @@ metadata:
   namespace: namespace
   title: title
   description: "The place to be, for great artists"
-  labels: 
+  labels:
     environment: prod
     organization: yamaha
   annotations:
-    backstage.io/managed-by-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/wayback-search-component.yaml",
+    backstage.io/managed-by-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/wayback-search-component.yaml"
     backstage.io/source-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/"
   tags: "tag1-tag2-tag3"
-  links: 
-    - url: "https://example.com/user"
+  links:
+    - url: https://example.com/user
       title: Examples Users
       icon: user
-    - url: "https://example.com/group"
+    - url: https://example.com/group
       title: Example Group
-      icon: group       
+      icon: group
+    - url: https://example.com/cloud
+      title: Link with Cloud Icon
+      icon: cloud
+    - url: https://example.com/dashboard
+      title: Dashboard
+      icon: dashboard
+    - url: https://example.com/help
+      title: Support
+      icon: help
+    - url: https://example.com/web
+      title: Website
+      icon: web
+    - url: https://example.com/alert
+      title: Alerts
+      icon: alert
 spec:
   type: website
   lifecycle: production
@@ -28,7 +43,7 @@ spec:
     - "resource:default/artists-db"
   providesApis:
     - "artist-api"
-  subcomponentOf: 
+  subcomponentOf:
     - someSystem
   consumesApis:
     - system1
