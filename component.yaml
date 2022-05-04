@@ -43,6 +43,6 @@ spec:
     - "resource:default/artists-db"
   providesApis:
     - "artist-api"
-  subcomponentOf: "someComponent"
+  subcomponentOf: someComponent
   consumesApis:
     - system1
