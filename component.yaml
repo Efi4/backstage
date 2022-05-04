@@ -19,12 +19,6 @@ metadata:
     - url: https://example.com/group
       title: Example Group
       icon: group 
-  status:
-    target:
-      kind: system
-      namespace: namespace
-      name: artistSystem
-    type: ownedBy  
 spec:
   type: website
   lifecycle: production
