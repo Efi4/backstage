@@ -9,8 +9,8 @@ metadata:
     environment: prod
     organization: yamaha
   annotations:
-    something: value1
-    another: value2
+    backstage.io/managed-by-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/wayback-search-component.yaml",
+    backstage.io/source-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/",
   tags: tag1-tag2-tag3
   links: 
     - url: https://example.com/user
@@ -19,6 +19,7 @@ metadata:
     - url: https://example.com/group
       title: Example Group
       icon: group 
+      
 spec:
   type: website
   lifecycle: production
