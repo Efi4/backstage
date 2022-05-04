@@ -9,7 +9,7 @@ metadata:
     environment: prod
     organization: yamaha
   annotations:
-    customAnnotation: "hello there"
+    backstage.io/managed-by-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/wayback-search-component.yaml"
   tags: ['one','two','three']
   links:
     - url: https://example.com/user
