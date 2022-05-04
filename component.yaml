@@ -39,9 +39,9 @@ spec:
   owner: "artist-relations-team"
   system: "artist-engagement-portal"
   dependsOn:
-    - "resource:default/artists-db"
+    - "artists-db"
   providesApis:
-    - "resource:default/artist-api"
-  subcomponentOf: "resource:default/searcher"
+    - "artist-api"
+  subcomponentOf: "searcher"
   consumesApis:
-    - "resource:default/vim-artist-web"
+    - "vim-artist-web"
