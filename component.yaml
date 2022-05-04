@@ -1,34 +1,33 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: artist-web
+  name: "artist-web"
   namespace: namespace
   title: title
-  description: The place to be, for great artists
+  description: "The place to be, for great artists"
   labels: 
     environment: prod
     organization: yamaha
   annotations:
     backstage.io/managed-by-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/wayback-search-component.yaml",
-    backstage.io/source-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/",
-  tags: tag1-tag2-tag3
+    backstage.io/source-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/"
+  tags: "tag1-tag2-tag3"
   links: 
-    - url: https://example.com/user
+    - url: "https://example.com/user"
       title: Examples Users
       icon: user
-    - url: https://example.com/group
+    - url: "https://example.com/group"
       title: Example Group
-      icon: group 
-      
+      icon: group       
 spec:
   type: website
   lifecycle: production
-  owner: artist-relations-team
-  system: artist-engagement-portal
+  owner: "artist-relations-team"
+  system: "artist-engagement-portal"
   dependsOn:
-    - resource:default/artists-db
+    - "resource:default/artists-db"
   providesApis:
-    - artist-api
+    - "artist-api"
   subcomponentOf: 
     - someSystem
   consumesApis:
