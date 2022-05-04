@@ -41,7 +41,7 @@ spec:
   dependsOn:
     - "resource:default/artists-db"
   providesApis:
-    - "artist-api"
-  subcomponentOf: searcher
+    - ""resource:default/artist-api"
+  subcomponentOf: "resource:default/searcher"
   consumesApis:
-    - system1
+    - "resource:default/vim-artist-web
