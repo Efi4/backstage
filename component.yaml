@@ -1,0 +1,40 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: artist-web
+  namespace: namespace
+  title: title
+  description: The place to be, for great artists
+  labels: 
+    environment: prod
+    organization: yamaha
+  annotations:
+    something: value1
+    another: value2
+  tags: tag1-tag2-tag3
+  links: 
+    - url: https://example.com/user
+      title: Examples Users
+      icon: user
+    - url: https://example.com/group
+      title: Example Group
+      icon: group 
+  status:
+    target:
+      kind: system
+      namespace: namespace
+      name: artistSystem
+    type: ownedBy  
+spec:
+  type: website
+  lifecycle: production
+  owner: artist-relations-team
+  system: artist-engagement-portal
+  dependsOn:
+    - resource:default/artists-db
+  providesApis:
+    - artist-api
+  subcomponentOf: 
+    - someSystem
+  consumesApis:
+    - system1
