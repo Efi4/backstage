@@ -44,6 +44,6 @@ spec:
   providesApis:
     - "artist-api"
   subcomponentOf:
-    - someSystem
+    - "someComponent"
   consumesApis:
     - system1
