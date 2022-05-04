@@ -43,6 +43,6 @@ spec:
     - "resource:default/artists-db"
   providesApis:
     - "artist-api"
-  subcomponentOf: someComponent
+  subcomponentOf: "default/vim-artist-web"
   consumesApis:
     - system1
