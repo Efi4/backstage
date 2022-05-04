@@ -42,6 +42,6 @@ spec:
     - "resource:default/artists-db"
   providesApis:
     - "artist-api"
-  subcomponentOf: "vim-artist-web"
+  subcomponentOf: searcher
   consumesApis:
     - system1
