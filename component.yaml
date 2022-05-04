@@ -44,4 +44,4 @@ spec:
     - "resource:default/artist-api"
   subcomponentOf: "resource:default/searcher"
   consumesApis:
-    - "resource:default/vim-artist-web
+    - "resource:default/vim-artist-web"
