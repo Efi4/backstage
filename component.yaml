@@ -3,7 +3,7 @@ metadata:
   name: "artist-web"
   namespace: namespace
   title: title
-  description: "New description"
+  description: "Description after removing required field"
   labels:
     environment: prod
     organization: yamaha
