@@ -9,7 +9,10 @@ metadata:
     environment: prod
     organization: yamaha
   annotations:
-    backstage.io/managed-by-location: "url:https://github.com/backstage/backstage/tree/master/packages/catalog-model/examples/components/wayback-search-component.yaml"
+    Source-location: "url:https://github.com/Efi4/backstage/edit/main/component.yaml"
+    Owner: "arz@sitecore.net"
+    Lifecycle: experimental
+    Type: service
   tags: ['one','two','three']
   links:
     - url: https://example.com/user
