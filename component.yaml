@@ -1,3 +1,4 @@
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: "artist-web"
@@ -37,7 +38,6 @@ metadata:
       icon: alert
 spec:
   type: website
-  lifecycle: production
   owner: "artist-relations-team"
   system: "artist-engagement-portal"
   dependsOn:
