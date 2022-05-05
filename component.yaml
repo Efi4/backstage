@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: "another-artist-web"
-  namespace: namespace
+  namespace: default
   title: title
   description: "Description after removing required field"
   labels:
