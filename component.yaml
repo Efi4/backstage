@@ -45,6 +45,6 @@ spec:
     - "Component:default/podcast-api"
   providesApis:
     - "artist-api"
-  subcomponentOf: "searcher"
+  subcomponentOf: "Component:default/searcher"
   consumesApis:
     - "vim-artist-web"
