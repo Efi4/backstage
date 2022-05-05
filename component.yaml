@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: "another-artist-web"
   namespace: default
-  title: title
+  title: "arz-test"
   description: "Description after removing required field"
   labels:
     environment: prod
