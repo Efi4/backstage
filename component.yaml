@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: "artist-web"
+  name: "another-artist-web"
   namespace: namespace
   title: title
   description: "Description after removing required field"
@@ -37,6 +37,7 @@ metadata:
       title: Alerts
       icon: alert
 spec:
+  lifecycle: production
   type: website
   owner: "artist-relations-team"
   system: "artist-engagement-portal"
