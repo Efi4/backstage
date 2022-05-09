@@ -37,10 +37,10 @@ metadata:
       title: Alerts
       icon: alert
 spec:
-  owner: "team-a"
+  owner: "arz-test-team"
   lifecycle: production
   type: website
-  system: "artist-engagement-portal"
+  system: "arz-test-system"
   dependsOn:
     - "Component:default/podcast-api"
   providesApis:
