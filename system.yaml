@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: arz-test-system
+  description: "System for demo purposes"
+spec:
+  owner: team-a
+  domain: poc
