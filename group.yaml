@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: arz-test-group
+  description: "The group for demo purposes"
+spec:
+  type: team
+  profile:
+    displayName: arz-test-gr
+    email: artem.zyma@sitecore.com
+    picture: https://www.google.com/imgres?imgurl=https%3A%2F%2Fsitecorecdn.azureedge.net%2F-%2Fmedia%2Fsitecoresite%2Fimages%2Fglobal%2Flogo%2Fsitecore-logo.svg&imgrefurl=https%3A%2F%2Fwww.sitecore.com%2F&tbnid=Qkjx6S0Qj3gQyM&vet=12ahUKEwjPs6TfvtL3AhXWtSoKHcnpBMsQMygAegUIARCnAQ..i&docid=5GaONyta2a6ZpM&w=800&h=178&q=sitecore%20logo%20url&ved=2ahUKEwjPs6TfvtL3AhXWtSoKHcnpBMsQMygAegUIARCnAQ
+  parent: infrastructure
+  children: [team-a, team-b]
