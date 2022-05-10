@@ -5,8 +5,8 @@ metadata:
   namespace: sitecore
   description: The Tenants API
   tags:
-    - Inventory
-    - Tenants
+    - inventory
+    - tenants
 spec:
   type: openapi
   lifecycle: dev
