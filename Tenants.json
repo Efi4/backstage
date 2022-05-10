@@ -4,7 +4,7 @@
 "metadata": {
   "name": "Tenants",
   "namespace": "sitecore",
-  "description": "The Tenants API"
+  "description": "The Tenants API",
   "tags": [
   {  "Inventory" },
   {  "Tenants"}
