@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: Tenants
+  description: The Tenants API
+  tags:
+    - Inventory
+    - Tenants
+  annotations:
+    backstage.io/definition-at-location: 'url:https://platform-inventory-dev.sitecore-staging.cloud/swagger/v1/swagger.json'
+spec:
+  type: openapi
+  lifecycle: dev
+  owner: sitecore/platformsystemua
+  definition: 
+    $text: https://platform-inventory-dev.sitecore-staging.cloud/swagger/v1/swagger.json
