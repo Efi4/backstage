@@ -1,17 +1,20 @@
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: Tenants
-  namespace: sitecore
-  description: The Tenants API
-  tags:
-    - Inventory
-    - Tenants
-spec:
-  type: openapi
-  lifecycle: dev
-  owner: sitecore/platformsystemua
-  definition: |
+{
+"apiVersion": "backstage.io/v1alpha1",
+"kind": "API",
+"metadata": {
+  "name": "Tenants",
+  "namespace": "sitecore",
+  "description": "The Tenants API"
+  "tags": [
+  {  "Inventory" },
+  {  "Tenants"}
+    ]
+ },
+"spec": {
+  "type": "openapi",
+  "lifecycle": "production",
+  "owner": "sitecore/platformsystemua",
+  "definition": {
   "openapi": "3.0.1",
   "info": {
     "title": "Sitecore Platform Inventory API",
@@ -1827,4 +1830,5 @@ spec:
       "Bearer": [ ]
     }
   ]
+}
 }
