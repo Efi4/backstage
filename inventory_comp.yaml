@@ -37,7 +37,7 @@ metadata:
       title: Alerts
       icon: alert
 spec:
-  owner: group:default/grp_-_platform_experience_team
+  owner: group:default/platform_experience_-_ua
   lifecycle: development
   type: component
   system: "inventory-system"
