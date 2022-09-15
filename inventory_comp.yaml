@@ -10,7 +10,7 @@ metadata:
     organization: sitecore
   annotations:
     Source-location: "url:https://github.com/Efi4/backstage/blob/main/inventory_comp.yaml"
-    Owner: group:default/grp_-_platform_experience_team
+    Owner: group:default/platform_experience_-_ua
     Lifecycle: experimental
     Type: service
   tags: ['inventory','dev']
