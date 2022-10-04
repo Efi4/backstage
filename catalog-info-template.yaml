@@ -1,0 +1,83 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+# some metadata about the template itself
+metadata:
+  name: sitecore-dotnetsampleapp-template
+  title: Sitecore .NET Sample App Template
+  description: Template that allow you to create the latest version of Sitecore .Net Sample App 
+spec:
+  owner: group:default/grp_-_platform_-_platform_experience_-_ua
+  type: service
+
+  # these are the steps which are rendered in the frontend with the form input
+  parameters:
+    - title: Fill in some steps
+      required:
+        - name
+        - displayName
+        - description
+        - owner
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+        description:
+          title: Description
+          type: string
+          description: Description of the component
+          ui:options:
+            rows: 5
+        displayName:
+          title: Display name
+          type: string
+          description: Display name of the component
+          ui:options:
+            rows: 5            
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+
+  # here's the steps that are executed in series in the scaffolder backend
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: https://github.com/Sitecore-PD-Sandbox/sitecore.dotnetsampleapp.template
+        copyWithoutRender:
+          - tests
+        values:
+          name: ${{ parameters.name }}
+          displayName: ${{ parameters.displayName }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          repoDestination: ${{ parameters.repoUrl | parseRepoUrl }}
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: This is ${{ parameters.name }}
+        repoUrl: ${{ parameters.repoUrl }}
+        repoVisibility: internal
