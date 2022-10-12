@@ -1,0 +1,37 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: inventory_api
+  title: Inventory API
+  description: The Inventory API component that manages the inventory of systems, tenants, components, scale units, and infrastructure resources in use.
+  annotations:
+    backstage.io/view-url: url:https://bitbucket.org/stylelabsdev/sitecore.platform.inventory/src/master/src/Sitecore.Platform.Inventory.WebApi/catalog-info.yaml
+    backstage.io/source-location: url:https://bitbucket.org/stylelabsdev/sitecore.platform.inventory/src/master/
+  tags: ['m2','csharp']
+  links:
+    - url: https://platform-inventory-dev.sitecore-staging.cloud
+      title: inventory_dev
+      icon: cloud
+    - url: https://platform-inventory-qa.sitecore-staging.cloud
+      title: inventory_qa
+      icon: group
+    - url: https://platform-inventory-staging.sitecore-staging.cloud
+      title: inventory_staging
+      icon: cloud
+    - url: https://platform-inventory-beta.sitecorecloud.io
+      title: inventory_pre_production
+      icon: cloud
+    - url: https://platform-inventory.sitecorecloud.io
+      title: inventory_production
+      icon: cloud
+    - url: https://stylelabs.atlassian.net/jira/software/c/projects/PRODOT/boards/419
+      title: _Inbox
+      icon: dashboard
+spec:
+  owner: group:default/grp_-_platform_-_platform_experience_-_ua
+  lifecycle: production
+  type: service
+  system: platform
+  providesApis:
+    - inventory_api-api-v1
+  dependsOn: ['system:identity']
