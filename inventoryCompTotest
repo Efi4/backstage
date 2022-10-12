@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: inventory_api
-  title: Inventory API
+  name: inventory_api_totest
+  title: Inventory API_test
   description: The Inventory API component that manages the inventory of systems, tenants, components, scale units, and infrastructure resources in use.
   annotations:
     backstage.io/view-url: url:https://bitbucket.org/stylelabsdev/sitecore.platform.inventory/src/master/src/Sitecore.Platform.Inventory.WebApi/catalog-info.yaml
