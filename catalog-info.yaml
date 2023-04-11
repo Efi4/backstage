@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: test-mms-mediaupload-location
+  description: A collection of all Media Upload APIs
+spec:
+  targets:
+    - ./src/Sitecore.MMS.Upload/catalog-info.yaml
+    - ./src/Sitecore.MMS.Upload/catalog-info-api-v1.yaml
