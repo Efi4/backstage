@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: test-mms-mediaupload
-  title: Media Upload Service
+  title: Test Media Upload Service
   description: Provides media upload functionality.
 spec:
   owner: group:default/grp_-_cp_media
