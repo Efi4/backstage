@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: test-mms-mediaupload-api-v1
+  title: Test Media Upload Service
+  description: Provides media upload functionality.
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/grp_-_cp_media
+  system: mms
+  definition:
+    $text: https://mms-upload-staging-weu.sitecore-staging.cloud/swagger/v1/swagger.yaml
