@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: test-mms-mediaupload
+  title: Media Upload Service
+  description: Provides media upload functionality.
+spec:
+  owner: group:default/grp_-_cp_media
+  lifecycle: production
+  type: service
+  system: mms
+  providesApis:
+    - sitecore-mms-mediaupload-api-v1
+  dependsOn: ['system:identity', 'component:sitecore-mms-cdn']
