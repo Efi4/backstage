@@ -1,19 +1,8 @@
 apiVersion: backstage.io/v1alpha1
-kind: System
+kind: Location
 metadata:
-  name: edge
-  title: Experience Edge
-  description: Experience Edge is a multi-tenant, fully managed (SaaS) service which delivers content at scale, to any channel across the globe.
-  links:
-    - title: Documentation Root
-      url: https://sitecore.atlassian.net/wiki/spaces/ONES/pages/1822622386/Experience+Edge
-    - title: System Context Diagram
-      url: https://sitecore.atlassian.net/wiki/spaces/ONES/pages/1892024572/Logical+Architecture
-    - title: Containers Diagram
-      url: https://sitecore.atlassian.net/wiki/spaces/ONES/pages/1892024572/Logical+Architecture
-    - title: Domain Model
-      url: https://sitecore.atlassian.net/wiki/spaces/ONES/pages/3503817291/Service+Architecture
-    - title: SLAs and SLOs
-      url: https://sitecore.atlassian.net/wiki/spaces/ONES/pages/3501327274/Non-Functional+Requirements+-+Experience+Edge
+  name: edge-components
+  description: A collection of all the Experience Edge Components and APIs.
 spec:
-  owner: group:default/grp_-_experience_edge_delivery_team
+  targets:
+    - ./system-catalog-info.yaml
