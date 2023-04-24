@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: edge
-  title: Experience Edge
+  name: edgetest
+  title: Experience Edge TEST
   description: Experience Edge is a multi-tenant, fully managed (SaaS) service which delivers content at scale, to any channel across the globe.
   links:
     - title: Documentation Root
