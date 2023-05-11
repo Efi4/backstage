@@ -1,0 +1,31 @@
+apiVersion: "backstage.io/v1alpha1"
+kind: "Component"
+metadata: 
+  name: "platform-resources_api_test"
+  title: "TesT Resources API"
+  description: "The Resources API component that manages the inventory of infrastructure resources in use that belongs to systems, components, and tenants."
+  annotations: 
+    backstage.io/source-location: "url:https://github.com/Sitecore-PD/sitecore.platform.resources/"
+    backstage.io/view-url: "url:https://github.com/Sitecore-PD/sitecore.platform.resources/"
+  tags: ["csharp"]
+  links:
+    - url: https://platform-resources-dev.sitecore-staging.cloud/
+      title: Base URL - dev
+      icon: cloud
+    - url: https://platform-resources-staging.sitecore-staging.cloud/
+      title: Base URL - staging
+      icon: cloud
+    - url: https://platform-resources.sitecorecloud.io/
+      title: Base URL - production
+      icon: cloud
+    - url: https://stylelabs.atlassian.net/jira/software/c/projects/PRODOT/boards/419
+      title: _Inbox
+      icon: dashboard
+spec: 
+  type: "service"
+  lifecycle: "production"
+  owner: "group:default/grp_-_platform_-_platform_experience_-_ua"
+  system: "system:platform"
+  dependsOn: ['system:identity']
+  providesApis:
+    - "platform-resources_api-api-v1"
