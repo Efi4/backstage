@@ -1,0 +1,182 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: sitecore-kedafunc-template
+  title: Sitecore Function App Queue Triggered Sample App Template
+  description: Template that allow you to create the repository based on Sitecore Function app template
+spec:
+  owner: group:default/grp_-_platform_-_platform_experience_-_ua
+  type: service
+
+  # these are the steps which are rendered in the frontend with the form input
+  parameters:
+    - title: 'Choose a name for your repository:'
+      description: |
+        Your repository name will be constructed of sitecore.<system>.<component> \
+        It must be written in all lowercase
+      required:
+        - organization
+        - repoName
+      properties:
+        organization:
+          title: Choose a Github Organization for your repository
+          type: string
+          enum: [
+            "Sitecore-PD"
+          ]
+          ui:autofocus: true
+        repoName:
+          title: Repository Name
+          type: string
+          ui:field: reponameValidationExtension
+
+    - title: 'Fill in details about your function app component:'
+      required:
+        - name
+        - displayName
+        - description
+        - owner
+        - codeOwners
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the function app component. Only lowercase alphabetical characters are allowed.
+          pattern: '^[a-z]+$'
+          ui:autofocus: true
+        displayName:
+          title: Display name
+          type: string
+          description: Display name of the function app component.
+        description:
+          title: Description
+          type: string
+          description: Description of the function app component.
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the function app component.
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        codeOwners:
+          title: Codeowners
+          type: string
+          description: Choose your team for CODEOWNERS of the GH repo
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+
+    - title: 'Fill in Docker/Kubernetes related details about you component:'
+      properties:
+        dockerImageName:
+          title: Docker image name (optional)
+          type: string
+          description: Unique name of Docker image of the service. Only lowercase alphanumeric characters, dash (-) and underscore (_) are allowed. Component name is used as Docker image name if value is not provided.
+          pattern: '^[a-z0-9]+([_-]{1}[a-z0-9]+)*$'
+          ui:autofocus: true
+        dockerNamespace:
+          title: Docker namespace (optional)
+          type: string
+          description: Docker namespace which is added to Docker image name of the service. Only lowercase alphanumeric characters, dash (-), underscore (_) and forward slash (/) are allowed. `dev/[componentname]` is used as Docker namespace if value is not provided.
+          pattern: '^([a-z0-9]+([_-]{1}[a-z0-9]+)*)+(\/[a-z0-9]+([_-]{1}[a-z0-9]+)*)*$'
+        helmChartName:
+          title: Helm chart name (optional)
+          type: string
+          description: Unique name of Helm chart of the service. Only lowercase alphanumeric characters, dash (-) and underscore (_) are allowed. Component name is used as Helm chart name if value is not provided.
+          pattern: '^[a-z0-9]+([_-]{1}[a-z0-9]+)*$'
+        manifestRepoUrl:
+          title: Manifest repo URL (optional)
+          type: string
+          description: URL to manifest repository of the service. `https://github.com/[organization]/sitecore.[system].system.git` is used as manifest repo URL if value is not provided.
+        manifestRepoApplicationName:
+          title: Manifest repo application name (optional)
+          type: string
+          description: Application name in manifest repository. Only lowercase alphanumeric characters, dash (-) and underscore (_) are allowed. Component name is used as application name if value is not provided.
+          pattern: '^[a-z0-9]+([_-]{1}[a-z0-9]+)*$'
+        kubernetesNamespacePrefix:
+          title: Kubernetes namespace prefix (optional)
+          type: string
+          description: Kubernetes namespace prefix. Only lowercase alphanumeric characters, dash (-) and underscore (_) are allowed. Component name is used as Kubernetes namespace prefix if value is not provided.
+          pattern: '^[a-z0-9]+([_-]{1}[a-z0-9]+)*$'
+
+  # here are the steps that are executed in series in the scaffolder backend
+  steps:
+    - id: CatalogFetch
+      name: Get group entity
+      action: catalog:fetch
+      input:
+        entityRef: ${{ parameters.codeOwners}}
+        
+    - id: createTeam
+      name: Create the codeowners team
+      action: github:teams:create
+      input:
+        organization: ${{ parameters.organization | trim }}
+        teamName: ${{ steps['CatalogFetch'].output.entity.spec.profile.displayName }}
+
+    - id: fetchSystem
+      name: Fetch system
+      action: catalog:fetch
+      input:
+        entityRef: system:default/${{ parameters.repoName.replace("sitecore.", "").slice(0, parameters.repoName.replace("sitecore.", "").indexOf(".")).trim() }}
+
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./templated
+        values:
+          repoName: ${{ parameters.repoName | trim }}
+          organization: ${{ parameters.organization | trim }}
+          system: ${{ steps['fetchSystem'].output.entity.metadata.name }}
+          name: ${{ parameters.name | trim }}
+          displayName: ${{ parameters.displayName | trim }}
+          description: ${{ parameters.description | trim }}
+          owner: ${{ parameters.owner | trim }}
+          codeowner: ${{ steps['createTeam'].output.slug }}
+          dockerImageName: ${{ parameters.dockerImageName | default(parameters.name, true) | trim }}
+          dockerNamespace: ${{ parameters.dockerNamespace | default("dev/" + parameters.name, true) | trim }}
+          helmChartName: ${{ parameters.helmChartName | default(parameters.name, true) | trim }}
+          manifestRepoUrl: ${{ parameters.manifestRepoUrl | default("https://github.com/" + parameters.organization + "/sitecore." + steps['fetchSystem'].output.entity.metadata.name + ".system.git", true) | trim }}
+          manifestRepoApplicationName: ${{ parameters.manifestRepoApplicationName | default(parameters.name, true) | trim }}
+          kubernetesNamespacePrefix: ${{ parameters.kubernetesNamespacePrefix | default(parameters.name, true) | trim }}
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        repoUrl: 'github.com?repo=${{ parameters.repoName | trim }}&owner=${{ parameters.organization | trim }}'
+        defaultBranch: 'master'
+        protectDefaultBranch: true
+        protectEnforceAdmins: true
+        deleteBranchOnMerge: true
+        gitCommitMessage: 'Created from backstage'
+        allowRebaseMerge: false
+        allowSquashMerge: true
+        allowMergeCommit: false
+        allowAutoMerge: true
+        requireCodeOwnerReviews: true
+        requireBranchesToBeUpToDate: true
+        repoVisibility: "internal"
+        squashMergeCommitTitle: "PR_TITLE"
+        squashMergeCommitMessage: "BLANK"
+        requiredApprovingReviewCount: 1
+        requiredConversationResolution: true
+        dismissStaleReviews: true
+        hasProjects: false
+        hasIssues: false
+        hasWiki: false
+        collaborators:
+          - team: grp-engineering-architect
+            access: admin
+          - team: temp-migration-admins
+            access: admin
+          - team: app-github-enterprise-contributor
+            access: push
+          - team: ${{ steps['createTeam'].output.slug }}
+            access: admin
+        # gitAuthorName: ${{ user.entity.metadata.name }}
+        # gitAuthorEmail: ${{ user.entity.spec.profile.email }}
